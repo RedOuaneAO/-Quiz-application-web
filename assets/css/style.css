@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;500&family=Slabo+27px&display=swap');
+body{
+    background: linear-gradient(to bottom right,rgb(78, 6, 102) ,rgb(219, 135, 248) );
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Inconsolata', monospace;
+}
+h1{
+    font-size: 100px;
+}
+
+
+
+
+
+
+
+
+

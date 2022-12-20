@@ -1,6 +1,3 @@
-/* 
-    This file contains an array of objects as Questions, to be loaded in the execution.
-*/
 
 
 var Questions = [
@@ -9,7 +6,7 @@ var Questions = [
         choice1: "Personal Home Page Hypertext Preprocessor", 
         choice2: "Pretext Hypertext Processor", 
         choice3: "Preprocessor Home Page", 
-        choice4: "Pretext Hypertext Processor",
+        choice4: "PHappy",
         answer: 1
       },
 
@@ -19,14 +16,6 @@ var Questions = [
         choice2: ".xml", 
         choice3: ".php", 
         choice4: ".ph",
-        answer: 3
-      },
-      {
-        question: "Un script PHP devrait commencer par ___ ?",
-        choice1: "<php", 
-        choice2: "<?", 
-        choice3: "<?php", 
-        choice4: "php",
         answer: 3
       },
       {

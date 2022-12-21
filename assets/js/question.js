@@ -19,6 +19,14 @@ var Questions = [
         answer: 3
       },
       {
+        question: "Un script PHP devrait commencer par ___ ?",
+        choice1: "<php", 
+        choice2: "<?", 
+        choice3: "<?php", 
+        choice4: "php",
+        answer: 3
+      },
+      {
         question: "Quelle version de PHP a introduit Try/catch Exception?",
         choice1: "PHP 4", 
         choice2: "PHP 5", 

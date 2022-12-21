@@ -1,10 +1,7 @@
-// let Questions=document.getElementById("#questionId");
-// let Option_1=document.getElementById("option1Id");
-// let Option_2=document.getElementById("option2Id");
-// let Option_3=document.getElementById("option3Id");
-// let Option_4=document.getElementById("option4Id");
 let quizForm=document.getElementById("quizform");
 let submitBtn =document.getElementById("submitId") 
+let startBtn =document.getElementById("startId") 
+let rulesForm=document.getElementById("rulesId");
 
 
 
@@ -15,46 +12,55 @@ let submitBtn =document.getElementById("submitId")
 
 /*=========================================================== Display Questions Function ============================================*/
 
+var num =0;
+function getQuestions(){
+    rulesForm.style.display="none";
+    displayQustions(num);
+    num++;
+}
 
-function displayQustions(){
-    // quizForm.innerHTML="";
-    for (let i = 0; i < Questions.length; i++) {
-        // var index= 0;
-       var  qNum=i+1;
-        quizForm.innerHTML +=` 
-        <div>
+// clearTimeout(timeOut); 
+
+function displayQustions(num){
+        quizForm.innerHTML =` 
+    <div id="TimerId">
         <span>00</span><span>:</span><span>45</span>
     </div>
     <progress id="file" class="" style="height: 20px;" max="100" value="5"></progress>
     <div>
-        <p>Question <span>${qNum}</span></p>
-        <p class="fw-bold" id="questionId"> ${Questions[i]["question"]} </p><hr>
+        <p>Question <span>${num+1}</span></p>
+        <p class="fw-bold" id="questionId"> ${Questions[num]["question"]} </p><hr>
     </div>
     <form action="" method="">
-        <table>
-            <tr>
-                <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option1Id"></td>
-                <td><div class="border rounded"><label for="Answer_1" class="p-2">${Questions[i]["choice1"]}</label></div></td>
-            </tr>
-            <tr>
-                <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option2Id"></td>
-                <td><div class="border rounded"><label for="Answer_2" class="p-2">${Questions[i]["choice2"]}</label></div></td>
-            </tr>
-            <tr>
-                <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option3Id"></td>
-                <td><div class="border rounded"><label for="Answer_3" class="p-2">${Questions[i]["choice3"]}</label></div></td>
-            </tr>
-            <tr>
-                <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option4Id"></td>
-                <td><div class="border rounded"><label for="Answer_4" class="p-2">${Questions[i]["choice4"]}</label></div></td>
-            </tr>
-        </table>
-            <div class="mt-5 d-flex justify-content-evenly">
-                    <button class="btn bg-success text-white px-3" id="submitId">Submit</button>
-                    <button class="btn bg-primary text-white px-4">Skip</button>
-            </div>
-    </form> `
-    }
+        <div>
+            <button class="border rounded" style="width:100%"><label for="option1Id" class="p-2">${Questions[num]["choice1"]}</label></button>
+            
+            <button class="border rounded mt-2" style="width:100%"><label for="option2Id" class="p-2">${Questions[num]["choice2"]}</label></button>
+                
+            <button class="border rounded my-2" style="width:100%"><label for="option3Id" class="p-2">${Questions[num]["choice3"]}</label></button>
+                
+            <button class="border rounded" style="width:100%"><label for="option4Id" class="p-2">${Questions[num]["choice4"]}</label></button>
+        </div>
+        <div class="mt-5 d-flex justify-content-evenly">
+                <button class="btn bg-success text-white px-3" id="submitId" onclick="getQuestions()">Submit</button>
+                <button class="btn bg-primary text-white px-4">Exit</button>
+        </div>
+    </form> `;
+    // const timeOut=  setTimeout(getQuestions, 3000); //kola 3 tawani kadoz lso2al akhor
 };
-displayQustions();
+
+
+
+// ======================================Timer==========================
+var timeDiv=document.getElementById("TimerId");
+var time;
+
+
+var sec=30;
+time= setInterval(timeDiv.innerHTML='00:'+sec,1000);
+sec--;
+
+
+
+
 

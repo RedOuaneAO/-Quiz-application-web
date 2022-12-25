@@ -19,14 +19,6 @@ var Questions = [
         answer: 3
       },
       {
-        question: "Un script PHP devrait commencer par ___ ?",
-        choice1: "<php", 
-        choice2: "<?", 
-        choice3: "<?php", 
-        choice4: "php",
-        answer: 3
-      },
-      {
         question: "Quelle version de PHP a introduit Try/catch Exception?",
         choice1: "PHP 4", 
         choice2: "PHP 5", 
@@ -75,22 +67,6 @@ var Questions = [
         answer: 3
       },
       {
-        question: " Quelle mot-clé empêche une méthode d’être redéfinie par une classe file?",
-        choice1: "abstract", 
-        choice2: "protected", 
-        choice3: "final", 
-        choice4: "static",
-        answer: 3
-      },
-      {
-        question: " Quelle mot-clé empêche une méthode d’être redéfinie par une classe file?",
-        choice1: "abstract", 
-        choice2: "protected", 
-        choice3: "final", 
-        choice4: "static",
-        answer: 3
-      },
-{
         question: " Quelle mot-clé empêche une méthode d’être redéfinie par une classe file?",
         choice1: "abstract", 
         choice2: "protected", 

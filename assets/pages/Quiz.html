@@ -6,7 +6,6 @@
     <title>Php | Quiz</title>
 <!-- ================== BEGIN core-css ================== -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<link href="assets/css/default/app.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
 <link rel="stylesheet" href="../css/style2.css">
 <!-- ================== END core-css ================== -->
@@ -16,10 +15,10 @@
 <a href="../../index.html" class="btn bg-info text-white fw-bold ms-3 mt-2">Back</a>
 <div class="stepper">
     <div class="stepper-item completed">
-      <div class="step-counter"><i class="bi bi-card-list text-white"></i></div>
+      <div class="step-counter"><i class="bi bi-card-list"></i></div>
       <div class="step-name text-white">RULES</div>
     </div>
-    <div class="stepper-item active">
+    <div class="stepper-item" id="QuizStep">
       <div class="step-counter"><i class="bi bi-puzzle"></i></div>
       <div class="step-name text-white">QUIZ</div>
     </div>
@@ -29,19 +28,58 @@
     </div>
   </div>
 <div class="container d-flex justify-content-center">
-    <div class="text-center mt-3 bg-white p-5 rounded" style="width: 500px;" id="quizform">
+    <div class="text-center mt-3 bg-white p-5 rounded" style="width: 500px;">
         <div class="" id="rulesId">
             <div>
                 <h3 class="fw-bold">Rules</h3><hr>
                 <ol>
                     <li class="text-start">one question is right </li>
                     <li class="text-start">if you didn't select in choice </li>
-                    <li class="text-start">you cant go back to the last choice after you submit</li>
+                    <li class="text-start">you cant go back to the last question after you submit</li>
                     <li class="text-start">you will get the result at the end</li>
                 </ol>
             </div>
             <div class="mt-5">
-                    <button class="btn bg-success text-white px-3" onclick="getQuestions()">Start</button>
+                    <button class="btn bg-success text-white px-3" id="startId" onclick="displayQuestions()">Start</button>
+            </div>
+        </div>
+        <!-- quizForm -->
+
+        <div id="quizId" style="display: none;">
+            <div id="TimerId">
+                <span>00</span><span>:</span><span>45</span>
+            </div>
+            <div id="progBack">
+                <div id="progFront">
+                </div>
+            </div>
+            <div>
+                <p>Question <span id="questionNum"></span></p>
+                <p class="fw-bold" id="questionId"></p><hr>
+            </div>
+            <div id="formId">
+                <table>
+                    <tr class="border">
+                        <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option1Id" value="1"></td>
+                        <td><label for="Answer_1" class="p-2" id="option1"></label></td>
+                    </tr>
+                    <tr>
+                        <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option2Id" value="2"></td>
+                        <td><label for="Answer_2" class="p-2" id="option2"></label></td>
+                    </tr>
+                    <tr>
+                        <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option3Id" value="3"></td>
+                        <td><label for="Answer_3" class="p-2" id="option3"></label></td>
+                    </tr>
+                    <tr>
+                        <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option4Id" value="4"></td>
+                        <td><label for="Answer_4" class="p-2" id="option4"></label></td>
+                    </tr>
+                    </table> 
+                <div class="mt-5 d-flex justify-content-evenly">
+                    <button class="btn bg-success text-white px-3" id="submitId" onclick="displayQuestions()">Submit</button>
+                    <button class="btn bg-primary text-white px-4">Exit</button>
+                </div>
             </div>
         </div>
     </div>

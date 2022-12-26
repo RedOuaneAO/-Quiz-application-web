@@ -11,6 +11,7 @@ let Answer_4=document.getElementById("option4");
 
 
 /*=========================================================== Display Questions Function ============================================*/
+let answerR= document.getElementsByName("options");
 
 
 let num =0;
@@ -25,6 +26,16 @@ function displayQuestions(){
     Answer_4.innerText= Questions[num].choice4;
     num++;
     quizCountdown();
+    // answerR.forEach(element=>{
+    //         if(element.checked==true){
+    //             console.log(element.value);
+    //         }else{
+    //             console.log("rrr");
+
+    //         }
+
+    //         // element.checked=false;
+    // })
 }
     
 
@@ -39,7 +50,7 @@ startBtn.addEventListener("click",()=>{
 });
 
 //====================================================progress Bar===========================
-
+let theAnswer = Questions[num].answer;
 let progressBar = document.getElementById("progFront");
 let submitBtn =document.getElementById("submitId");
 let n=10;
@@ -48,6 +59,20 @@ submitBtn.addEventListener("click",()=>{
     counterElement.innerHTML = 10;
     progressBar.style.width=n+"%";
     n=n+10;
+    answerR.forEach(element=>{
+        if(element.checked==true){
+            console.log(element.value);
+            if(element.value==theAnswer){
+
+                element.parentElement.parentElement.style.background="green";
+            }else{
+                element.parentElement.parentElement.style.background="red";
+
+            }
+        }
+    element.checked=false;
+    element.parentElement.parentElement.style.background="none";
+    })
 });
 
 
@@ -69,18 +94,20 @@ function quizCountdown(){
 
 //====================================================correct Answer===========================
 
-// let answerR= document.querySelectorAll(".choices");
 // let theAnswer = Questions[num].answer;
 // let right="";
 // let rAnswer =
 // function rightAnswer(){
-//     answerR.forEach(rAnswer=>{
-//         if(theAnswer== answerR.value){
-
+    
+//         if( answerR[0].checked){
+// alert("hhhhhh");
 //         }
-//     })
+// answerR.forEach(element =>{
+//    element.
+// })
    
 // }
+// console(answerR)
 
 
 // let options = document.querySelectorAll('input[type="radio"]');

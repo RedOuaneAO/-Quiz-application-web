@@ -10,20 +10,20 @@ var Questions = [
         answer: 1
       },
       {
-        question: "Les fichiers PHP ont l’extension …. ?",
-        choice1: ".html", 
-        choice2: ".xml", 
-        choice3: ".php", 
-        choice4: ".ph",
-        answer: 3
-      },
-      {
         question: "Quelle version de PHP a introduit Try/catch Exception?",
         choice1: "PHP 4", 
         choice2: "PHP 5", 
         choice3: "PHP 5.3", 
         choice4: "PHP 7.2",
         answer: 2
+      },
+      {
+        question: "Les fichiers PHP ont l’extension …. ?",
+        choice1: ".html", 
+        choice2: ".xml", 
+        choice3: ".php", 
+        choice4: ".ph",
+        answer: 3
       },
       {
         question: "Les espaces de noms ou « namespaces » sont disponibles depuis quelle version ?",

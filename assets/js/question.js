@@ -1,7 +1,7 @@
 
 
 var Questions = [
-    {
+      {
         question: "Que signifie PHP?",
         choice1: "Personal Home Page Hypertext Preprocessor", 
         choice2: "Pretext Hypertext Processor", 
@@ -9,7 +9,6 @@ var Questions = [
         choice4: "PHappy",
         answer: 1
       },
-
       {
         question: "Les fichiers PHP ont l’extension …. ?",
         choice1: ".html", 
@@ -26,7 +25,7 @@ var Questions = [
         choice4: "PHP 7.2",
         answer: 2
       },
-{
+      {
         question: "Les espaces de noms ou « namespaces » sont disponibles depuis quelle version ?",
         choice1: "PHP 4", 
         choice2: "PHP 5", 

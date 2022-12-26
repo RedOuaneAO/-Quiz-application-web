@@ -13,7 +13,6 @@ let Answer_4=document.getElementById("option4");
 /*=========================================================== Display Questions Function ============================================*/
 
 
-
 let num =0;
 function displayQuestions(){
     rulesForm.style.display="none";
@@ -25,50 +24,11 @@ function displayQuestions(){
     Answer_3.innerText= Questions[num].choice3;
     Answer_4.innerText= Questions[num].choice4;
     num++;
+    quizCountdown();
 }
     
-    // clearTimeout(timeOut); 
-// let num =0;
-// function displayQuestions(){
-//         quizForm.innerHTML =` 
-//     <div id="TimerId">
-//         <span>00</span><span>:</span><span>45</span>
-//     </div>
-//     <div id="progBack">
-//         <div id="progFront">
-//         </div>
-//     </div>
-//     <div>
-//         <p>Question <span>${num+1}</span></p>
-//         <p class="fw-bold" id="questionId"> `+ Questions[num].question +`</p><hr>
-//     </div>
-//     <form id="formId">
-//     <table>
-//     <tr>
-//         <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option1Id" value="1"></td>
-//         <td><label for="Answer_1" class="p-2">`+ Questions[num].choice1 +`</label></td>
-//     </tr>
-//     <tr>
-//         <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option2Id" value="2"></td>
-//         <td><label for="Answer_2" class="p-2">`+ Questions[num].choice2 +`</label></td>
-//     </tr>
-//     <tr>
-//         <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option3Id" value="3"></td>
-//         <td><label for="Answer_3" class="p-2">`+ Questions[num].choice3 +`</label></td>
-//     </tr>
-//     <tr>
-//         <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option4Id" value="4"></td>
-//         <td><label for="Answer_4" class="p-2">`+ Questions[num].choice4 +`</label></td>
-//     </tr>
-//     </table>
-//         <div class="mt-5 d-flex justify-content-evenly">
-//                 <button class="btn bg-success text-white px-3" id="submitId" onclick="displayQuestions()">Submit</button>
-//                 <button class="btn bg-primary text-white px-4">Exit</button>
-//         </div>
-//     </form> `;
-//     num++;
-// //  var timeOut=  setTimeout(displayQustions, 3000); //kola 3 tawani kadoz lso2al akhor
-// };
+
+
 
 //======================================================steper=======================================
 
@@ -80,16 +40,64 @@ startBtn.addEventListener("click",()=>{
 
 //====================================================progress Bar===========================
 
-let progressBar = document.getElementById("progfront");
+let progressBar = document.getElementById("progFront");
 let submitBtn =document.getElementById("submitId");
+let n=10;
 submitBtn.addEventListener("click",()=>{
-    progressBar.style.width+=10+"%";
-})
+    clearInterval(counterTime);
+    counterElement.innerHTML = 10;
+    progressBar.style.width=n+"%";
+    n=n+10;
+});
+
+
+
+//====================================================timeCounter===========================
+
+var counterElement = document.getElementById("timeCounter");
+function quizCountdown(){
+   counterTime = setInterval(()=>{
+    if(counterElement.innerHTML>0){
+        counterElement.innerHTML -= 1;
+    }else if(counterElement.innerHTML==0){
+    //   clearInterval(counterTime);
+        submitBtn.click();
+        counterElement.innerHTML = 10;
+    }
+  }, 1000);
+}
+
+//====================================================correct Answer===========================
+
+// let answerR= document.querySelectorAll(".choices");
+// let theAnswer = Questions[num].answer;
+// let right="";
+// let rAnswer =
+// function rightAnswer(){
+//     answerR.forEach(rAnswer=>{
+//         if(theAnswer== answerR.value){
+
+//         }
+//     })
+   
+// }
+
+
+// let options = document.querySelectorAll('input[type="radio"]');
+// let checkedOption= options.checked;
+// let rightAnswer = Questions[num].answer;
+// function Answers(){
+//     if(checkedOption==rightAnswer){
+//         options.style.background="red";
+//     }
+// }
+
+
+// console.log(checkedOption);
 
 
 
 
-// ======================================Timer==========================
 
 
 
@@ -97,36 +105,3 @@ submitBtn.addEventListener("click",()=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* <table>
-<tr>
-    <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option1Id" value="1"></td>
-    <td><div class="border rounded"><label for="Answer_1" class="p-2">${Questions[num]["choice1"]}</label></div></td>
-</tr>
-<tr>
-    <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option2Id" value="2"></td>
-    <td><div class="border rounded"><label for="Answer_2" class="p-2">${Questions[num]["choice2"]}</label></div></td>
-</tr>
-<tr>
-    <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option3Id" value="3"></td>
-    <td><div class="border rounded"><label for="Answer_3" class="p-2">${Questions[num]["choice3"]}</label></div></td>
-</tr>
-<tr>
-    <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option4Id" value="4"></td>
-    <td><div class="border rounded"><label for="Answer_4" class="p-2">${Questions[num]["choice4"]}</label></div></td>
-</tr>
-</table> */

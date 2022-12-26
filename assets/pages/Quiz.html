@@ -47,9 +47,9 @@
 
         <div id="quizId" style="display: none;">
             <div id="TimerId">
-                <span>00</span><span>:</span><span>45</span>
+                <span>00</span><span>:</span><span id="timeCounter">10</span>
             </div>
-            <div id="progBack">
+            <div id="progBack" class="my-2">
                 <div id="progFront">
                 </div>
             </div>
@@ -58,21 +58,21 @@
                 <p class="fw-bold" id="questionId"></p><hr>
             </div>
             <div id="formId">
-                <table>
-                    <tr class="border">
-                        <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option1Id" value="1"></td>
+                <table class="d-flex justify-content-center">
+                    <tr>
+                        <td><input class="choices me-4 form-check-input" type="radio" name="options" id="Answer_1" value="1"></td>
                         <td><label for="Answer_1" class="p-2" id="option1"></label></td>
                     </tr>
                     <tr>
-                        <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option2Id" value="2"></td>
+                        <td><input class="choices me-4 form-check-input" type="radio" name="options" id="Answer_2" value="2"></td>
                         <td><label for="Answer_2" class="p-2" id="option2"></label></td>
                     </tr>
                     <tr>
-                        <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option3Id" value="3"></td>
+                        <td><input class="choices me-4 form-check-input" type="radio" name="options" id="Answer_3" value="3"></td>
                         <td><label for="Answer_3" class="p-2" id="option3"></label></td>
                     </tr>
                     <tr>
-                        <td><input class="me-4 form-check-input" type="radio" name="Questions" id="option4Id" value="4"></td>
+                        <td><input class="choices me-4 form-check-input" type="radio" name="options" id="Answer_4" value="4"></td>
                         <td><label for="Answer_4" class="p-2" id="option4"></label></td>
                     </tr>
                     </table> 

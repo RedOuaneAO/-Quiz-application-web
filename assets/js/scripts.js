@@ -15,7 +15,10 @@ let Answer_4=document.getElementById("option4");
 let answerR= document.getElementsByName("options");
 
 let num =0;
+let theAnswer = Questions[num].answer;
+
 function displayQuestions(){
+    if(num<Questions.length){
         rulesForm.style.display="none";
         quizForm.style.display="block";
         QuestionNum.innerText=`${num+1}`;
@@ -24,8 +27,11 @@ function displayQuestions(){
         Answer_2.innerText= Questions[num].choice2;
         Answer_3.innerText= Questions[num].choice3;
         Answer_4.innerText= Questions[num].choice4;
-        num++;
+       
     quizCountdown();
+    // console.log(Questions[num].answer)
+    }
+        
 }
     
 
@@ -36,41 +42,48 @@ function displayQuestions(){
 let startBtn =document.getElementById("startId");
 let QuizStep =document.getElementById("QuizStep");
 startBtn.addEventListener("click",()=>{
+    displayQuestions();
     QuizStep.classList.add("completed");
 });
 
 //====================================================progress Bar / correctAnswer===========================
-
-
-let theAnswer = Questions[num].answer;
 let progressBar = document.getElementById("progFront");
 let submitBtn =document.getElementById("submitId");
-let n=10;
-let number=0;
+let n=20;
+let score=0;
+progressBar.style.width="10%";
+
 submitBtn.addEventListener("click",()=>{
-    clearInterval(counterTime);
-    counterElement.innerHTML = 10;
-    if(number<Questions.length){
-        progressBar.style.width=n+"%";
-        n=n+10;
-        number++;
+    num++;
+    displayQuestions();
+
+    if(num<Questions.length){
+        clearInterval(counterTime);
+        counterElement.innerHTML = 10;
+            progressBar.style.width=n+"%";
+            n=n+10;
+        let x;
+        answerR.forEach(element=>{
+            let elementBtn =element.parentElement.parentElement;
+            if(element.checked==true){
+                x=element.value;
+                console.log(Questions[num].answer)
+                if(x==Questions[num-1].answer){
+                    elementBtn.style.background="green";
+                    score++;
+                }else{
+                    elementBtn.style.background="red";
+                }
+            }
+            element.checked=false;
+    
+        })
+        
+        // elementBtn.style.background="none";
     }else {
         Result();            //to take me to the result form after last submit
     }
-
-    answerR.forEach(element=>{
-        let elementBtn =element.parentElement.parentElement;
-        if(element.checked==true){
-            console.log(element.value);
-            if(element.value==theAnswer){
-                elementBtn.style.background="green";
-            }else{
-                elementBtn.style.background="red";
-            }
-        }
-    element.checked=false;
-    // elementBtn.style.background="none";
-    })
+   
 });
 
 
@@ -84,11 +97,12 @@ function quizCountdown(){
         counterElement.innerHTML -= 1;
     }else if(counterElement.innerHTML==0){
     //   clearInterval(counterTime);
-    if(number<Questions.length){
-        submitBtn.click();
-        counterElement.innerHTML = 10;
-        Result();
-    }
+        if(num<Questions.length){
+            submitBtn.click();
+            counterElement.innerHTML = 10;
+        }else{
+            Result();
+        }
     }
   }, 1000);
 }
@@ -102,8 +116,8 @@ function Result(){
     ResultStep.classList.add("completed");
     rulesForm.style.display="none";
     quizForm.style.display="none";
-    resultForm.style.display="block"
-
+    resultForm.style.display="block";
+    console.log(score);
 }
 
 
@@ -113,3 +127,5 @@ function Result(){
 
 
 
+// sort()
+// Math.random()

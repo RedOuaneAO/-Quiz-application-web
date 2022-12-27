@@ -1,5 +1,6 @@
 let rulesForm=document.getElementById("rulesId");
 let quizForm=document.getElementById("quizId");
+let resultForm=document.getElementById("resultId");
 let QuestionNum=document.getElementById("questionNum");
 let Question=document.getElementById("questionId");
 let Answer_1=document.getElementById("option1");
@@ -13,29 +14,18 @@ let Answer_4=document.getElementById("option4");
 /*=========================================================== Display Questions Function ============================================*/
 let answerR= document.getElementsByName("options");
 
-
 let num =0;
 function displayQuestions(){
-    rulesForm.style.display="none";
-    quizForm.style.display="block";
-    QuestionNum.innerText=`${num+1}`;
-    Question.innerText= Questions[num].question;
-    Answer_1.innerText= Questions[num].choice1;
-    Answer_2.innerText= Questions[num].choice2;
-    Answer_3.innerText= Questions[num].choice3;
-    Answer_4.innerText= Questions[num].choice4;
-    num++;
+        rulesForm.style.display="none";
+        quizForm.style.display="block";
+        QuestionNum.innerText=`${num+1}`;
+        Question.innerText= Questions[num].question;
+        Answer_1.innerText= Questions[num].choice1;
+        Answer_2.innerText= Questions[num].choice2;
+        Answer_3.innerText= Questions[num].choice3;
+        Answer_4.innerText= Questions[num].choice4;
+        num++;
     quizCountdown();
-    // answerR.forEach(element=>{
-    //         if(element.checked==true){
-    //             console.log(element.value);
-    //         }else{
-    //             console.log("rrr");
-
-    //         }
-
-    //         // element.checked=false;
-    // })
 }
     
 
@@ -49,29 +39,37 @@ startBtn.addEventListener("click",()=>{
     QuizStep.classList.add("completed");
 });
 
-//====================================================progress Bar===========================
+//====================================================progress Bar / correctAnswer===========================
+
+
 let theAnswer = Questions[num].answer;
 let progressBar = document.getElementById("progFront");
 let submitBtn =document.getElementById("submitId");
 let n=10;
+let number=0;
 submitBtn.addEventListener("click",()=>{
     clearInterval(counterTime);
     counterElement.innerHTML = 10;
-    progressBar.style.width=n+"%";
-    n=n+10;
+    if(number<Questions.length){
+        progressBar.style.width=n+"%";
+        n=n+10;
+        number++;
+    }else {
+        Result();            //to take me to the result form after last submit
+    }
+
     answerR.forEach(element=>{
+        let elementBtn =element.parentElement.parentElement;
         if(element.checked==true){
             console.log(element.value);
             if(element.value==theAnswer){
-
-                element.parentElement.parentElement.style.background="green";
+                elementBtn.style.background="green";
             }else{
-                element.parentElement.parentElement.style.background="red";
-
+                elementBtn.style.background="red";
             }
         }
     element.checked=false;
-    element.parentElement.parentElement.style.background="none";
+    // elementBtn.style.background="none";
     })
 });
 
@@ -86,44 +84,27 @@ function quizCountdown(){
         counterElement.innerHTML -= 1;
     }else if(counterElement.innerHTML==0){
     //   clearInterval(counterTime);
+    if(number<Questions.length){
         submitBtn.click();
         counterElement.innerHTML = 10;
+        Result();
+    }
     }
   }, 1000);
 }
 
-//====================================================correct Answer===========================
-
-// let theAnswer = Questions[num].answer;
-// let right="";
-// let rAnswer =
-// function rightAnswer(){
-    
-//         if( answerR[0].checked){
-// alert("hhhhhh");
-//         }
-// answerR.forEach(element =>{
-//    element.
-// })
-   
-// }
-// console(answerR)
 
 
-// let options = document.querySelectorAll('input[type="radio"]');
-// let checkedOption= options.checked;
-// let rightAnswer = Questions[num].answer;
-// function Answers(){
-//     if(checkedOption==rightAnswer){
-//         options.style.background="red";
-//     }
-// }
+//===================================================Result===========================
+let ResultStep =document.getElementById("ResultStep");
 
+function Result(){
+    ResultStep.classList.add("completed");
+    rulesForm.style.display="none";
+    quizForm.style.display="none";
+    resultForm.style.display="block"
 
-// console.log(checkedOption);
-
-
-
+}
 
 
 

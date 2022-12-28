@@ -7,6 +7,7 @@ let Answer_1=document.getElementById("option1");
 let Answer_2=document.getElementById("option2");
 let Answer_3=document.getElementById("option3");
 let Answer_4=document.getElementById("option4");
+let submitBtn =document.getElementById("submitId");
 
 
 
@@ -14,11 +15,21 @@ let Answer_4=document.getElementById("option4");
 /*=========================================================== Display Questions Function ============================================*/
 let answerR= document.getElementsByName("options");
 
+
 let num =0;
 let theAnswer = Questions[num].answer;
 
+answerR.forEach(element=>{                             //for controling the visibility of the button
+    element.addEventListener("click",()=>{
+        submitBtn.style.visibility="visible";
+    })
+});
+
 function displayQuestions(){
     if(num<Questions.length){
+        answerR.forEach(element=>{
+            element.parentElement.parentElement.style.background="none";
+        })
         rulesForm.style.display="none";
         quizForm.style.display="block";
         QuestionNum.innerText=`${num+1}`;
@@ -29,7 +40,6 @@ function displayQuestions(){
         Answer_4.innerText= Questions[num].choice4;
        
     quizCountdown();
-    // console.log(Questions[num].answer)
     }
         
 }
@@ -48,42 +58,39 @@ startBtn.addEventListener("click",()=>{
 
 //====================================================progress Bar / correctAnswer===========================
 let progressBar = document.getElementById("progFront");
-let submitBtn =document.getElementById("submitId");
 let n=20;
 let score=0;
-progressBar.style.width="10%";
-
 submitBtn.addEventListener("click",()=>{
+    submitBtn.style.visibility="hidden";
     num++;
-    displayQuestions();
-
     if(num<Questions.length){
-        clearInterval(counterTime);
-        counterElement.innerHTML = 10;
-            progressBar.style.width=n+"%";
-            n=n+10;
-        let x;
-        answerR.forEach(element=>{
-            let elementBtn =element.parentElement.parentElement;
-            if(element.checked==true){
-                x=element.value;
-                console.log(Questions[num].answer)
-                if(x==Questions[num-1].answer){
-                    elementBtn.style.background="green";
-                    score++;
-                }else{
-                    elementBtn.style.background="red";
-                }
-            }
-            element.checked=false;
-    
-        })
-        
-        // elementBtn.style.background="none";
+                clearInterval(counterTime);
+                counterElement.innerHTML = 10;
+                    progressBar.style.width=n+"%";
+                    n=n+10;
+                let x;
+                answerR.forEach(element=>{
+                    let elementBtn =element.parentElement.parentElement;
+                    if(element.checked==true){
+                        x=element.value;
+                        console.log(Questions[num].answer)
+                        if(x==Questions[num-1].answer){
+                            elementBtn.style.background="green";
+                            // clearTimeout(next);
+                            score++;
+                        }else{
+                            elementBtn.style.background="red";
+                        }
+                    }
+                    element.checked=false;
+                    // elementBtn.style.background="none";
+            
+                })
+                
     }else {
         Result();            //to take me to the result form after last submit
     }
-   
+    next =setTimeout(displayQuestions,1500); // to wait for 1.5 s befor go to the next question
 });
 
 
